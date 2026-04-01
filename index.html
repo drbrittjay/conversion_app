@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Measurement Conversion</title>
+  <style>
+    body { font-family: Arial; text-align: center; }
+    table { margin: auto; }
+    input { width: 80px; }
+    .result { color: red; }
+  </style>
+
+  <script>
+    function clearForm() {
+      document.querySelectorAll("input[type=text]").forEach(i => i.value = "");
+    }
+
+    function round2(num) {
+      return Math.round(num * 100) / 100;
+    }
+
+    function convert() {
+      // Temperature
+      let F = parseFloat(document.getElementById("F").value);
+      let C = parseFloat(document.getElementById("C").value);
+
+      if (!isNaN(F)) document.getElementById("C").value = round2((F - 32) * 5/9);
+      if (!isNaN(C)) document.getElementById("F").value = round2((C * 9/5) + 32);
+
+      // Inches ↔ cm
+      let inch = parseFloat(document.getElementById("in").value);
+      let cm = parseFloat(document.getElementById("cm").value);
+
+      if (!isNaN(inch)) document.getElementById("cm").value = round2(inch * 2.54);
+      if (!isNaN(cm)) document.getElementById("in").value = round2(cm * 0.3937);
+
+      // Feet ↔ meters
+      let ft = parseFloat(document.getElementById("ft").value);
+      let m = parseFloat(document.getElementById("m").value);
+
+      if (!isNaN(ft)) document.getElementById("m").value = round2(ft * 0.3048);
+      if (!isNaN(m)) document.getElementById("ft").value = round2(m / 0.3048);
+
+      // Miles ↔ km
+      let mi = parseFloat(document.getElementById("mi").value);
+      let km = parseFloat(document.getElementById("km").value);
+
+      if (!isNaN(mi)) document.getElementById("km").value = round2(mi * 1.609);
+      if (!isNaN(km)) document.getElementById("mi").value = round2(km * 0.6214);
+
+      // Gallons ↔ liters
+      let gal = parseFloat(document.getElementById("gal").value);
+      let L = parseFloat(document.getElementById("L").value);
+
+      if (!isNaN(gal)) document.getElementById("L").value = round2(gal * 3.785);
+      if (!isNaN(L)) document.getElementById("gal").value = round2(L / 3.785);
+
+      // Ounces ↔ grams
+      let oz = parseFloat(document.getElementById("oz").value);
+      let g = parseFloat(document.getElementById("g").value);
+
+      if (!isNaN(oz)) document.getElementById("g").value = round2(oz * 28.35);
+      if (!isNaN(g)) document.getElementById("oz").value = round2(g / 28.35);
+
+      // Pounds ↔ kg
+      let lb = parseFloat(document.getElementById("lb").value);
+      let kg = parseFloat(document.getElementById("kg").value);
+
+      if (!isNaN(lb)) document.getElementById("kg").value = round2(lb * 0.4536);
+      if (!isNaN(kg)) document.getElementById("lb").value = round2(kg * 2.205);
+    }
+  </script>
+</head>
+
+<body>
+
+<h2>On-line Measurement Conversion</h2>
+<hr>
+
+<table>
+<tr>
+  <td>Fahrenheit:</td>
+  <td><input id="F"></td>
+  <td>↔</td>
+  <td>Celsius:</td>
+  <td><input id="C"></td>
+</tr>
+
+<tr>
+  <td>Inches:</td>
+  <td><input id="in"></td>
+  <td>↔</td>
+  <td>Centimeters:</td>
+  <td><input id="cm"></td>
+</tr>
+
+<tr>
+  <td>Feet:</td>
+  <td><input id="ft"></td>
+  <td>↔</td>
+  <td>Meters:</td>
+  <td><input id="m"></td>
+</tr>
+
+<tr>
+  <td>Miles:</td>
+  <td><input id="mi"></td>
+  <td>↔</td>
+  <td>Kilometers:</td>
+  <td><input id="km"></td>
+</tr>
+
+<tr>
+  <td>Gallons:</td>
+  <td><input id="gal"></td>
+  <td>↔</td>
+  <td>Liters:</td>
+  <td><input id="L"></td>
+</tr>
+
+<tr>
+  <td>Ounces:</td>
+  <td><input id="oz"></td>
+  <td>↔</td>
+  <td>Grams:</td>
+  <td><input id="g"></td>
+</tr>
+
+<tr>
+  <td>Pounds:</td>
+  <td><input id="lb"></td>
+  <td>↔</td>
+  <td>Kilograms:</td>
+  <td><input id="kg"></td>
+</tr>
+</table>
+
+<br>
+
+<button onclick="convert()">Convert</button>
+<button onclick="clearForm()">Clear</button>
+
+</body>
+</html>
